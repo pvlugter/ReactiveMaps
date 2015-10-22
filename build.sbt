@@ -8,6 +8,7 @@ resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/release
 libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-contrib" % "2.3.11",
   "com.typesafe.conductr" %% "play24-conductr-bundle-lib" % "1.0.1",
+  "com.typesafe.cinnamon" %% "cinnamon-takipi" % "0.2.1",
   "com.typesafe.play.extras" %% "play-geojson" % "1.3.0",
   "org.webjars" % "bootstrap" % "3.0.0",
   "org.webjars" % "knockout" % "2.3.0",
@@ -41,6 +42,8 @@ BundleKeys.endpoints := Map(
 )
 BundleKeys.roles := Set("dmz")
 BundleKeys.startCommand ++= Seq(
+  "-J-agentlib:TakipiAgent",
+  "-Dtakipi.name=" + (normalizedName in Bundle).value,
   "-Dhttp.address=$WEB_BIND_IP",
   "-Dhttp.port=$WEB_BIND_PORT",
   "-Dakka.cluster.roles.1=frontend"
@@ -58,6 +61,8 @@ inConfig(BackendRegion)(Seq(
     Seq((BundleKeys.executableScriptPath in BackendRegion).value) ++
       (javaOptions in BackendRegion).value ++
       Seq(
+        "-J-agentlib:TakipiAgent",
+        "-Dtakipi.name=" + (normalizedName in BackendRegion).value,
         "-Dakka.cluster.roles.1=backend-region",
         "-main", "backend.Main"
       )
@@ -71,6 +76,8 @@ inConfig(BackendSummary)(Seq(
     Seq((BundleKeys.executableScriptPath in BackendSummary).value) ++
       (javaOptions in BackendSummary).value ++
       Seq(
+        "-J-agentlib:TakipiAgent",
+        "-Dtakipi.name=" + (normalizedName in BackendSummary).value,
         "-Dakka.cluster.roles.1=backend-summary",
         "-main", "backend.Main"
       )

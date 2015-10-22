@@ -1,6 +1,6 @@
-addSbtPlugin("com.typesafe.rp" % "sbt-typesafe-rp" % "15v09p01")
+addSbtPlugin("com.typesafe.rp" % "sbt-typesafe-rp" % "15v09p01-instrumented-02")
 
-val typesafeUrl = "https://repo.typesafe.com/typesafe/for-subscribers-only/AEE4D829FC38A3247F251ED25BA45ADD675D48EB"
+val typesafeUrl = "https://repo.typesafe.com/typesafe/subscribers-early-access"
 
 resolvers += "typesafe-rp-mvn" at typesafeUrl
 

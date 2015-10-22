@@ -17,7 +17,7 @@ object ClientConnection {
    * The factory interface for creating client connections
    */
   trait Factory {
-    def apply(email: String, upstream: ActorRef): Actor
+    def apply(email: String, upstream: ActorRef): ClientConnection
   }
 
   /**
