@@ -11,3 +11,5 @@ resolvers += "typesafe-rp-mvn" at rpUrl
 
 // The resolver name must start with typesafe-rp
 resolvers += Resolver.url("typesafe-rp-ivy", url(rpUrl))(Resolver.ivyStylePatterns)
+
+resolvers += "typesafe-rp-instrumented" at "https://repo.typesafe.com/typesafe/instrumented-reactive-platform"

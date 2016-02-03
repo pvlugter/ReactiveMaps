@@ -19,6 +19,8 @@ libraryDependencies ++= Seq(
   "org.webjars" % "squirejs" % "0.1.0" % "test"
 )
 
+libraryDependencies += "com.typesafe.cinnamon" %% "cinnamon-chmetrics-statsd-reporter" % "1.2.2"
+
 routesGenerator := InjectedRoutesGenerator
 
 scalacOptions += "-feature"
